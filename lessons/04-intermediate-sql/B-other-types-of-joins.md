@@ -51,12 +51,14 @@ SELECT
     B.Name, A.Title
 FROM
     Album A
-RIGHT OUTER JOIN
+RIGHT JOIN
     Artist B ON
-        A.ArtistId = B.ArtistId;
+        A.ArtistId = B.ArtistId
+WHERE A.ArtistId IS NULL;
+
 ```
 
-That OUTER part means _only_ take things that don't have anything in the Album table, so it will only give us artists with no albums in the albums table.
+The `WHERE A.ArtistId IS NULL` makes this an `RIGHT OUTER JOIN`. So _only_ take things that don't have anything in the Album table, so it will only give us artists with no albums in the albums table.
 
 ## NATURAL JOIN
 
